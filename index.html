@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Organ Donation Matchmaking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+            <h1>AI Organ Donation Matchmaking</h1>
+            <p>Connecting donors and recipients with cutting-edge AI technology</p>
+        </header>
+        <div class="container">
+            <div class="live-count">
+                <div class="count-item">
+                    <h3>Donations Made</h3>
+                    <p id="donation-count">12</p>
+                </div>
+                <div class="count-item">
+                    <h3>People Waiting</h3>
+                    <p id="waiting-count">34</p>
+                </div>
+            </div>
+        <main>
+            <section class="card-grid">
+                <div class="card">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                        </svg>
+                        For Donors
+                    </h2>
+                    <p>Make a life-changing decision. Register as an organ donor and our AI will find the perfect match.</p>
+                    <button class="btn" onclick="openForm('donor-form')">Register as Donor</button>
+                </div>
+                <div class="card">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        For Recipients
+                    </h2>
+                    <p>Hope is here. Join our waiting list and let our AI technology find your match faster.</p>
+                    <button class="btn" onclick="openForm('recipient-form')">Join Waiting List</button>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h2>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.3-4.3"/>
+                            </svg>
+                            AI Matching
+                        </h2>
+                        <p>Our advanced AI algorithms analyze multiple factors to find the best donor-recipient matches.</p>
+                    </div>
+                    <div class="card">
+                        <h2>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Quick Process
+                        </h2>
+                        <p>Streamlined matching process reduces waiting times and improves outcomes.</p>
+                    </div>
+                    <div class="card">
+                        <h2>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                            </svg>
+                            Save Lives
+                        </h2>
+                        <p>By optimizing matches, we maximize the impact of every donation and save more lives.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta">
+                <h2>Ready to Make a Difference?</h2>
+                <a href="#" class="btn btn-green">Get Started Today</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 AI Organ Donation Matchmaking. All rights reserved.</p>
+        </footer>
+    </div>
+    <div id="donor-form" class="form-popup">
+        <form class="form-container">
+            <h2>Register as Donor</h2>
+            <label for="donor-name"><b>Full Name</b></label>
+            <input type="text" placeholder="Enter Full Name" name="donor-name" required>
+
+            <label for="donor-email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="donor-email" required>
+
+            <label for="donor-age"><b>Age</b></label>
+            <input type="number" placeholder="Enter Age" name="donor-age" required>
+
+            <label for="donor-blood-type"><b>Blood Type</b></label>
+            <select name="donor-blood-type" required>
+                <option value="">Select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm('donor-form')">Close</button>
+        </form>
+    </div>
+
+    <!-- Recipient Registration Form -->
+    <div id="recipient-form" class="form-popup">
+        <form class="form-container">
+            <h2>Join Waiting List</h2>
+            <label for="recipient-name"><b>Full Name</b></label>
+            <input type="text" placeholder="Enter Full Name" name="recipient-name" required>
+
+            <label for="recipient-email"><b>Email</b></label>
+            <input type="email" placeholder="Enter Email" name="recipient-email" required>
+
+            <label for="recipient-age"><b>Age</b></label>
+            <input type="number" placeholder="Enter Age" name="recipient-age" required>
+
+            <label for="recipient-blood-type"><b>Blood Type</b></label>
+            <select name="recipient-blood-type" required>
+                <option value="">Select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <label for="recipient-organ"><b>Needed Organ</b></label>
+            <select name="recipient-organ" required>
+                <option value="">Select Organ</option>
+                <option value="kidney">Kidney</option>
+                <option value="liver">Liver</option>
+                <option value="heart">Heart</option>
+                <option value="lung">Lung</option>
+                <option value="pancreas">Pancreas</option>
+            </select>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm('recipient-form')">Close</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.3/web3.min.js"></script>
+
+</body>
+</html>
