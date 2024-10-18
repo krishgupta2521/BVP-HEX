@@ -1,0 +1,250 @@
+CREATE DATABASE organ;
+
+USE organ;
+
+CREATE TABLE donor (
+    donor_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    dob DATE NOT NULL,
+    gender VARCHAR(10),
+    blood_type VARCHAR(3),
+    contact VARCHAR(15),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zip_code VARCHAR(10),
+    registration_date DATE
+);
+
+CREATE TABLE organ (
+    organ_id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT,
+    organ_type VARCHAR(50) NOT NULL,
+    availability_status VARCHAR(20) DEFAULT 'Available',
+    donation_date DATE,
+    FOREIGN KEY (donor_id) REFERENCES donor(donor_id)
+);
+
+CREATE TABLE medical_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT,
+    medical_condition VARCHAR(255),
+    diagnosis_date DATE,
+    treatment_status VARCHAR(50),
+    FOREIGN KEY (donor_id) REFERENCES donor(donor_id)
+);
+
+CREATE TABLE recipient_match (
+    match_id INT AUTO_INCREMENT PRIMARY KEY,
+    organ_id INT,
+    recipient_name VARCHAR(100),
+    recipient_blood_type VARCHAR(3),
+    match_status VARCHAR(20) DEFAULT 'Pending',
+    match_date DATE,
+    FOREIGN KEY (organ_id) REFERENCES organ(organ_id)
+);
+
+CREATE TABLE receiver (
+    receiver_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    dob DATE NOT NULL,
+    gender VARCHAR(10),
+    blood_type VARCHAR(3),
+    contact VARCHAR(15),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zip_code VARCHAR(10),
+    registration_date DATE 
+);
+
+CREATE TABLE recipient_medical_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id INT,
+    medical_condition VARCHAR(255),
+    diagnosis_date DATE,
+    treatment_status VARCHAR(50),
+    FOREIGN KEY (receiver_id) REFERENCES receiver(receiver_id)
+);
+
+CREATE TABLE organ_match (
+    match_id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id INT,
+    organ_id INT,
+    donor_id INT,
+    match_status VARCHAR(20) DEFAULT 'Pending',
+    match_date DATE,
+    FOREIGN KEY (receiver_id) REFERENCES receiver(receiver_id),
+    FOREIGN KEY (organ_id) REFERENCES donor.organ(organ_id),
+    FOREIGN KEY (donor_id) REFERENCES donor.donor(donor_id)
+);
+
+INSERT INTO donor (first_name, last_name, dob, gender, blood_type, contact, email, address, city, state, zip_code, registration_date)
+VALUES 
+('John', 'Doe', '1980-01-15', 'Male', 'O+', '123-456-7890', 'john.doe@example.com', '123 Main St', 'New York', 'NY', '10001', '2024-01-10'),
+('Jane', 'Smith', '1992-06-21', 'Female', 'A+', '987-654-3210', 'jane.smith@example.com', '456 Oak St', 'Los Angeles', 'CA', '90001', '2024-02-01'),
+('Robert', 'Brown', '1975-03-09', 'Male', 'B-', '111-222-3333', 'robert.brown@example.com', '789 Pine St', 'Chicago', 'IL', '60601', '2024-01-15'),
+('Emily', 'Johnson', '1985-12-12', 'Female', 'AB+', '555-666-7777', 'emily.johnson@example.com', '101 Maple St', 'Houston', 'TX', '77001', '2024-01-18'),
+('Michael', 'Williams', '1990-07-20', 'Male', 'O-', '888-999-0000', 'michael.williams@example.com', '234 Birch St', 'Phoenix', 'AZ', '85001', '2024-01-22'),
+('Olivia', 'Davis', '1988-02-11', 'Female', 'A-', '222-333-4444', 'olivia.davis@example.com', '345 Cedar St', 'Philadelphia', 'PA', '19101', '2024-02-05'),
+('David', 'Garcia', '1979-11-23', 'Male', 'B+', '444-555-6666', 'david.garcia@example.com', '678 Elm St', 'San Antonio', 'TX', '78201', '2024-01-28'),
+('Sophia', 'Martinez', '1995-05-14', 'Female', 'O+', '777-888-9999', 'sophia.martinez@example.com', '910 Oakwood Ave', 'San Diego', 'CA', '92101', '2024-01-31'),
+('Daniel', 'Rodriguez', '1982-09-17', 'Male', 'AB-', '333-444-5555', 'daniel.rodriguez@example.com', '567 Willow St', 'Dallas', 'TX', '75201', '2024-02-02'),
+('Emma', 'Miller', '1977-08-05', 'Female', 'A+', '111-222-3334', 'emma.miller@example.com', '789 Cherry St', 'San Jose', 'CA', '95101', '2024-02-06');
+
+
+INSERT INTO organ (donor_id, organ_type, availability_status, donation_date)
+VALUES 
+(1, 'Kidney', 'Available', NULL),
+(1, 'Liver', 'Donated', '2024-10-01'),
+(2, 'Heart', 'Available', NULL),
+(3, 'Kidney', 'Available', NULL),
+(4, 'Lung', 'Available', NULL),
+(5, 'Heart', 'Donated', '2024-08-01'),
+(6, 'Liver', 'Available', NULL),
+(7, 'Kidney', 'Available', NULL),
+(8, 'Lung', 'Donated', '2024-09-10'),
+(9, 'Pancreas', 'Available', NULL),
+(10, 'Heart', 'Donated', '2024-06-15');
+
+INSERT INTO medical_history (donor_id, medical_condition, diagnosis_date, treatment_status)
+VALUES 
+(1, 'Hypertension', '2020-05-10', 'Ongoing'),
+(2, 'Diabetes', '2019-08-14', 'Ongoing'),
+(3, 'Chronic Kidney Disease', '2021-02-25', 'Treated'),
+(4, 'Asthma', '2017-09-30', 'Managed'),
+(5, 'Liver Cirrhosis', '2018-11-12', 'Ongoing'),
+(6, 'Heart Disease', '2022-01-20', 'Ongoing'),
+(7, 'Lung Cancer', '2016-04-18', 'Remission'),
+(8, 'Diabetes', '2020-07-07', 'Managed'),
+(9, 'Chronic Pancreatitis', '2019-03-15', 'Ongoing'),
+(10, 'Hypertension', '2021-05-11', 'Ongoing');
+
+INSERT INTO recipient_match (organ_id, recipient_name, recipient_blood_type, match_status, match_date)
+VALUES 
+(2, 'James White', 'A+', 'Matched', '2024-10-01'),
+(5, 'Linda Green', 'O-', 'Matched', '2024-08-01'),
+(10, 'Steven Black', 'B+', 'Matched', '2024-06-15'),
+(3, 'Sarah Blue', 'O+', 'Pending', NULL),
+(4, 'Brian Red', 'AB-', 'Pending', NULL),
+(6, 'Rebecca Yellow', 'A+', 'Pending', NULL),
+(7, 'Paul Orange', 'O+', 'Pending', NULL),
+(8, 'Margaret Purple', 'B-', 'Matched', '2024-09-10'),
+(9, 'Edward Brown', 'AB+', 'Pending', NULL),
+(1, 'Alice Gray', 'O+', 'Pending', NULL);
+
+INSERT INTO receiver (first_name, last_name, dob, gender, blood_type, contact, email, address, city, state, zip_code, registration_date)
+VALUES 
+('James', 'White', '1985-01-22', 'Male', 'A+', '111-123-4567', 'james.white@example.com', '123 Hill St', 'New York', 'NY', '10001', '2024-01-11'),
+('Linda', 'Green', '1990-03-18', 'Female', 'O-', '222-234-5678', 'linda.green@example.com', '456 River St', 'Los Angeles', 'CA', '90001', '2024-01-12'),
+('Steven', 'Black', '1982-06-15', 'Male', 'B+', '333-345-6789', 'steven.black@example.com', '789 Forest Ave', 'Chicago', 'IL', '60601', '2024-01-13'),
+('Sarah', 'Blue', '1995-10-23', 'Female', 'O+', '444-456-7890', 'sarah.blue@example.com', '101 Sunset Blvd', 'Houston', 'TX', '77001', '2024-01-14'),
+('Brian', 'Red', '1988-04-11', 'Male', 'AB-', '555-567-8901', 'brian.red@example.com', '234 Sunrise Ave', 'Phoenix', 'AZ', '85001', '2024-01-15'),
+('Rebecca', 'Yellow', '1979-07-09', 'Female', 'A+', '666-678-9012', 'rebecca.yellow@example.com', '345 Lake Dr', 'Philadelphia', 'PA', '19101', '2024-01-16'),
+('Paul', 'Orange', '1992-11-30', 'Male', 'O+', '777-789-0123', 'paul.orange@example.com', '678 Mountain Rd', 'San Antonio', 'TX', '78201', '2024-01-17'),
+('Margaret', 'Purple', '1983-09-19', 'Female', 'B-', '888-890-1234', 'margaret.purple@example.com', '910 Ocean St', 'San Diego', 'CA', '92101', '2024-01-18'),
+('Edward', 'Brown', '1980-02-25', 'Male', 'AB+', '999-901-2345', 'edward.brown@example.com', '567 Desert Rd', 'Dallas', 'TX', '75201', '2024-01-19'),
+('Alice', 'Gray', '1975-05-07', 'Female', 'O+', '101-012-3456', 'alice.gray@example.com', '789 Canyon St', 'San Jose', 'CA', '95101', '2024-01-20');
+
+INSERT INTO recipient_medical_history (receiver_id, medical_condition, diagnosis_date, treatment_status)
+VALUES 
+(1, 'Heart Disease', '2020-05-10', 'Ongoing'),
+(2, 'Liver Failure', '2019-08-14', 'Ongoing'),
+(3, 'Kidney Stones', '2021-02-25', 'Treated'),
+(4, 'Diabetes', '2017-09-30', 'Managed'),
+(5, 'Chronic Respiratory Disease', '2018-11-12', 'Ongoing'),
+(6, 'Autoimmune Disorder', '2022-01-20', 'Ongoing'),
+(7, 'Cancer', '2016-04-18', 'Remission'),
+(8, 'Severe Allergies', '2020-07-07', 'Managed'),
+(9, 'Chronic Pain', '2019-03-15', 'Ongoing'),
+(10, 'Hypertension', '2021-05-11', 'Ongoing');
+
+
+INSERT INTO organ_match (receiver_id, organ_id, donor_id, match_status, match_date)
+VALUES 
+(1, 1, 1, 'Matched', '2024-01-11'),
+(2, 2, 5, 'Matched', '2024-01-12'),
+(3, 3, 10, 'Matched', '2024-01-13'),
+(4, 4, 4, 'Pending', NULL),
+(5, 5, 6, 'Pending', NULL),
+(6, 6, 2, 'Pending', NULL),
+(7, 7, 7, 'Matched', '2024-01-14'),
+(8, 8, 8, 'Pending', NULL),
+(9, 9, 9, 'Matched', '2024-01-15'),
+(10, 10, 3, 'Pending', NULL);
+
+
+CREATE TABLE donation_history (
+    donation_id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT,
+    donation_date DATE,
+    organ_type VARCHAR(50),
+    location VARCHAR(255),
+    FOREIGN KEY (donor_id) REFERENCES donor(donor_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE medical_tests (
+    test_id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id INT,
+    test_name VARCHAR(255),
+    test_date DATE,
+    results VARCHAR(255),
+    FOREIGN KEY (receiver_id) REFERENCES receiver(receiver_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE treatment_history (
+    treatment_id INT AUTO_INCREMENT PRIMARY KEY,
+    receiver_id INT,
+    treatment_date DATE,
+    treatment_type VARCHAR(255),
+    status VARCHAR(100),
+    FOREIGN KEY (receiver_id) REFERENCES receiver(receiver_id) ON DELETE CASCADE
+);
+
+INSERT INTO donation_history (donor_id, donation_date, organ_type, location)
+VALUES 
+(1, '2024-01-12', 'Kidney', 'New York General Hospital'),
+(2, '2024-01-15', 'Liver', 'Los Angeles Medical Center'),
+(3, '2024-01-20', 'Heart', 'Chicago Central Hospital'),
+(4, '2024-01-22', 'Pancreas', 'Houston Health Institute'),
+(5, '2024-01-25', 'Lung', 'Phoenix Memorial Hospital'),
+(6, '2024-01-28', 'Cornea', 'Philadelphia Eye Institute'),
+(7, '2024-02-01', 'Kidney', 'San Antonio Kidney Center'),
+(8, '2024-02-05', 'Liver', 'San Diego Organ Hospital'),
+(9, '2024-02-10', 'Heart', 'Dallas Heart Institute'),
+(10, '2024-02-12', 'Intestine', 'San Jose Surgical Center');
+
+
+INSERT INTO medical_tests (receiver_id, test_name, test_date, results)
+VALUES 
+(1, 'Blood Test', '2024-01-15', 'Normal'),
+(2, 'Liver Function Test', '2024-01-20', 'Elevated Enzymes'),
+(3, 'Kidney Function Test', '2024-01-22', 'Normal'),
+(4, 'Chest X-Ray', '2024-01-25', 'Clear'),
+(5, 'MRI Scan', '2024-01-28', 'No Issues'),
+(6, 'CT Scan', '2024-02-02', 'Minor Abnormalities'),
+(7, 'Allergy Test', '2024-02-05', 'Positive for Pollen'),
+(8, 'Ultrasound', '2024-02-08', 'Normal'),
+(9, 'COVID-19 Test', '2024-02-10', 'Negative'),
+(10, 'Electrocardiogram (ECG)', '2024-02-12', 'Normal');
+
+
+INSERT INTO treatment_history (receiver_id, treatment_date, treatment_type, status)
+VALUES 
+(1, '2024-01-16', 'Physical Therapy', 'Ongoing'),
+(2, '2024-01-21', 'Medication', 'Prescribed'),
+(3, '2024-01-23', 'Surgery', 'Completed'),
+(4, '2024-01-26', 'Rehabilitation', 'Pending'),
+(5, '2024-01-30', 'Counseling', 'Completed'),
+(6, '2024-02-01', 'Medication', 'Ongoing'),
+(7, '2024-02-03', 'Physical Therapy', 'Completed'),
+(8, '2024-02-06', 'Medication', 'Ongoing'),
+(9, '2024-02-11', 'Surgery', 'Scheduled'),
+(10, '2024-02-13', 'Follow-up Appointment', 'Completed');
+
