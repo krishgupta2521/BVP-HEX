@@ -3,170 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Organ Donation Matchmaking</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Glitch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
-        <header>
-            <h1>AI Organ Donation Matchmaking</h1>
-            <p>Connecting donors and recipients with cutting-edge AI technology</p>
-        </header>
-        <div class="container">
-            <div class="live-count">
-                <div class="count-item">
-                    <h3>Donations Made</h3>
-                    <p id="donation-count">12</p>
-                </div>
-                <div class="count-item">
-                    <h3>People Waiting</h3>
-                    <p id="waiting-count">34</p>
-                </div>
+        
+       
+
+<header>
+        <div class="logo">
+            <img src="logo-gl.png" alt="Site Logo">
+            <span class="site-name">GLITCH</span>
+        </div>
+        <nav class="nav-options">
+            <a href="#content">Home</a>
+            <a href="#text">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <div class="hamburger-icon"></div>
+            <div class="hamburger-icon"></div>
+            <div class="hamburger-icon"></div>
+        </button>
+         <ul class="menu-items" id="menuItems">
+            <li>
+                <a href="#content">
+                    <i class="fas fa-home"></i> 
+                </a>
+            </li>
+            <li>
+                <a href="#text">
+                    <i class="fas fa-info-circle"></i> 
+                </a>
+            </li>
+            <li>
+                <a href="#services">
+                    <i class="fas fa-heart"></i> 
+                </a>
+            </li>
+            <li>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i> 
+                </a>
+            </li>
+        </ul>
+    </div>
+        
+
+    <!-- Main Content -->
+    <div class="content" id="content" style="text-align: center">
+        <h1 style="font-size: 2.7rem;">ONE ORGAN, MANY POSSIBILITIES.</h1><br>
+
+        <div class="image-container">
+            <img src="img.png" alt = "image"><br>
+            <img src="image.png" alt="Description of image">
+        </div> <br><br>
+        
+        <br>
+        <br>
+        <div class="text-container">
+            <div class="text" id="text">
+                <p>At Glitch, we are committed to raising awareness about the vital importance of organ donation and transplantation. Our mission is to provide essential resources for individuals considering becoming donors. Every year, lives are lost due to a shortage of organs, but you can help make a difference.
+
+                    Our website offers guidance on how to register as an organ donor and the impact a single donation can have. We also share inspiring stories of those transformed by organ transplants. Join us in our mission to inspire others to consider organ donation as a valuable gift of life.</p>
+                <br>
             </div>
-        <main>
-            <section class="card-grid">
-                <div class="card">
-                    <h2>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                        </svg>
-                        For Donors
-                    </h2>
-                    <p>Make a life-changing decision. Register as an organ donor and our AI will find the perfect match.</p>
-                    <button class="btn" onclick="openForm('donor-form')">Register as Donor</button>
-                </div>
-                <div class="card">
-                    <h2>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                        For Recipients
-                    </h2>
-                    <p>Hope is here. Join our waiting list and let our AI technology find your match faster.</p>
-                    <button class="btn" onclick="openForm('recipient-form')">Join Waiting List</button>
-                </div>
-            </section>
+        </div>
+        
 
-            <section class="how-it-works">
-                <h2>How It Works</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <h2>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.3-4.3"/>
-                            </svg>
-                            AI Matching
-                        </h2>
-                        <p>Our advanced AI algorithms analyze multiple factors to find the best donor-recipient matches.</p>
-                    </div>
-                    <div class="card">
-                        <h2>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            Quick Process
-                        </h2>
-                        <p>Streamlined matching process reduces waiting times and improves outcomes.</p>
-                    </div>
-                    <div class="card">
-                        <h2>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                            </svg>
-                            Save Lives
-                        </h2>
-                        <p>By optimizing matches, we maximize the impact of every donation and save more lives.</p>
-                    </div>
-                </div>
-            </section>
+        
+        <!-- Content Boxes -->
+        <div class="content-boxes">
+            <!-- Box 1 -->
+            <div class="content-box">
+                <h2>Need Organ</h2>
+                <p>Take advantage of our wide range of tools and services designed to empower you.</p>
+                <button id="openPageBtn" class="big-btn">Fill Form</button>
 
-            <section class="cta">
-                <h2>Ready to Make a Difference?</h2>
-                <a href="#" class="btn btn-green">Get Started Today</a>
-            </section>
-        </main>
+            </div>
 
-        <footer>
-            <p>&copy; 2024 AI Organ Donation Matchmaking. All rights reserved.</p>
-        </footer>
-    </div>
-    <div id="donor-form" class="form-popup">
-        <form class="form-container">
-            <h2>Register as Donor</h2>
-            <label for="donor-name"><b>Full Name</b></label>
-            <input type="text" placeholder="Enter Full Name" name="donor-name" required>
+            <!-- Box 2 -->
+            <div class="content-box">
+                <h2>Donate Organ</h2>
+                <p>Become a part of something big. Explore, connect, and contribute to our vibrant community.</p>
+                <button id="openPageBtn2" class="big-btn">A relative</button>
+                <button id="openPageBtn1" class="big-btn">Not a relative ?</button>
 
-            <label for="donor-email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="donor-email" required>
-
-            <label for="donor-age"><b>Age</b></label>
-            <input type="number" placeholder="Enter Age" name="donor-age" required>
-
-            <label for="donor-blood-type"><b>Blood Type</b></label>
-            <select name="donor-blood-type" required>
-                <option value="">Select Blood Type</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-            </select>
-
-            <button type="submit" class="btn">Submit</button>
-            <button type="button" class="btn cancel" onclick="closeForm('donor-form')">Close</button>
-        </form>
+            </div>
+        </div>
     </div>
 
-    <!-- Recipient Registration Form -->
-    <div id="recipient-form" class="form-popup">
-        <form class="form-container">
-            <h2>Join Waiting List</h2>
-            <label for="recipient-name"><b>Full Name</b></label>
-            <input type="text" placeholder="Enter Full Name" name="recipient-name" required>
-
-            <label for="recipient-email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="recipient-email" required>
-
-            <label for="recipient-age"><b>Age</b></label>
-            <input type="number" placeholder="Enter Age" name="recipient-age" required>
-
-            <label for="recipient-blood-type"><b>Blood Type</b></label>
-            <select name="recipient-blood-type" required>
-                <option value="">Select Blood Type</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-            </select>
-
-            <label for="recipient-organ"><b>Needed Organ</b></label>
-            <select name="recipient-organ" required>
-                <option value="">Select Organ</option>
-                <option value="kidney">Kidney</option>
-                <option value="liver">Liver</option>
-                <option value="heart">Heart</option>
-                <option value="lung">Lung</option>
-                <option value="pancreas">Pancreas</option>
-            </select>
-
-            <button type="submit" class="btn">Submit</button>
-            <button type="button" class="btn cancel" onclick="closeForm('recipient-form')">Close</button>
-        </form>
+    <br>
+    <div class="counter-container">
+        <div class="counter">
+            <span id="donationCount" class="number">0</span><br>
+            <span class="label">Donations Made</span>
+        </div>
+        <div class="counter">
+            <span id="waitingListCount" class="number">0</span><br>
+            <span class="label">People in Waiting List</span>
+        </div>
     </div>
+    
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.3/web3.min.js"></script>
+    <!-- Services Section -->
+<section class="services" id="services" style="text-align: center">
+    <h2>Our Services</h2><br>
+    <div class="service-container">
+        <div class="service-box">
+            <h3>Organ Donation Awareness</h3>
+            <p>We provide resources and information on the importance of organ donation.</p><br>
+            <button class="big-btn" id="serviceBtn1">Learn More</button>
+        </div>
+        <div class="service-box">
+            <h3>Transplant Coordination</h3>
+            <p>Our team assists in coordinating transplant procedures for patients.</p><br>
+            <button class="big-btn" id="serviceBtn2">Learn More</button>
+        </div>
+        <div class="service-box">
+            <h3>Support for Donors and Recipients</h3>
+            <p>We offer counseling and support services for both donors and recipients.</p><br>
+            <button class="big-btn" id="serviceBtn3">Learn More</button>
+        </div>
+    </div>
+</section>
 
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, feel free to reach out!</p>
+    <p>Email: contact@glitch.in</p>
+    <p>Phone: (+91) 8577441209</p>
+</section>
+
+    
+
+    <!-- Be a Part of Us Section -->
+<section class="join-us">
+    <h2>Join Our Community</h2>
+    <p>We invite you to add your ideas and contribute to our growing community. Your thoughts and actions can make a difference!</p>
+    <button class="big-btn" onclick="alert('Thank you for joining us!')">Be a Part of It!</button>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Glitch. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

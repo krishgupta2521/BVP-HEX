@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,225 +7,443 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #e6f3ff, #f0e6ff);
-    padding: 2rem;
+    background-color: white;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
+/* Header Styles */
+/* Header Styles */
 header {
-    text-align: center;
-    margin-bottom: 3rem;
+    background-color: #33658A;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px; /* Increase top/bottom padding */
+    align-items: center;
+    height: 80px; /* Set a specific height if needed */
 }
 
-h1 {
-    font-size: 2.5rem;
-    color: #1e40af;
-    margin-bottom: 0.5rem;
+
+header .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
 }
 
-header p {
-    font-size: 1.25rem;
-    color: #4b5563;
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+header .site-name {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
+header .nav-options a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
-.card h2 {
-    font-size: 1.5rem;
-    color: #1e40af;
-    margin-bottom: 1rem;
+header .nav-options a:hover {
+    text-decoration: underline;
+}
+
+/* Side Menu Styles */
+/* Side Menu Styles */
+.side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 60px; /* Start collapsed */
+    height: 100%;
+    background-color: #86BBD8;
+    padding-top: 50px;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.side-menu.expanded {
+    width: 250px; /* Expanded width */
+}
+
+/* Main Content */
+.content {
+    margin-left: 60px; /* Adjust based on the collapsed width of the side menu */
+    padding: 20px;
+    flex-grow: 1;
+    background-color: white;
+    transition: margin-left 0.3s; /* Smooth transition for margin */
+}
+
+/* Updated to ensure content doesn't shift */
+.side-menu.expanded ~ .content {
+    margin-left: 250px; /* Set the margin when the menu is expanded */
+}
+
+
+
+/* Rest of your styles... */
+
+
+.side-menu button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    padding: 15px 20px;
     display: flex;
     align-items: center;
 }
 
-.card h2 svg {
-    margin-right: 0.5rem;
-}
-
-.card p {
-    margin-bottom: 1rem;
-    color: #4b5563;
-}
-
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #2563eb;
+.side-menu ul li a {
     color: white;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
-.btn:hover {
-    background-color: #1d4ed8;
+.side-menu ul li a .icon {
+    font-size: 24px;
+    margin-right: 10px;
 }
 
-.btn-purple {
-    background-color: #7c3aed;
+.side-menu ul li a:hover {
+    background-color: #33658A;
 }
 
-.btn-purple:hover {
-    background-color: #6d28d9;
+/* Hide menu text when side menu is collapsed */
+.side-menu.shrink ul li a .menu-text {
+    display: none;
 }
 
-.btn-green {
-    background-color: #10b981;
-}
-
-.btn-green:hover {
-    background-color: #059669;
-}
-
-.how-it-works {
+/* Shrink icon size when collapsed */
+.side-menu.shrink ul li a .icon {
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-right: 0;
 }
 
-.how-it-works h2 {
-    font-size: 2rem;
-    color: #1f2937;
-    margin-bottom: 2rem;
+.side-menu.shrink {
+    width: 60px;
 }
 
-.cta {
+/* Main Content */
+
+
+.content h1 {
+    color: #33658A;
+}
+
+.content p {
+    color: #444;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.text-container {
+    display: flex; /* Use Flexbox for layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    height: 100%; /* Ensure it takes full height of the parent */
+}
+
+.counter-container {
+    display: flex; /* Use Flexbox for layout */
+    justify-content: space-between; /* Space between the counters */
+    align-items: center; /* Center items vertically */
+    padding: 20px; /* Padding around the container */
+    background-color: #f0f0f0; /* Background color for the counter section */
+    border: 1px solid #33658A; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px;
+     /* Margin around the container */
+    margin-left: 70px; /* Margin around the container */
+    height: 100px; /* Increase height of the container */
+}
+
+.counter {
+    text-align: center; /* Center text within the div */
+}
+
+.number {
+    font-size: 2.5rem; /* Make the numbers larger */
+    font-weight: bold; /* Make numbers bold */
+    color: #33658A; /* Text color for the numbers */
+    display: block; /* Ensure numbers take up the full line */
+}
+
+.label {
+    font-size: 1.2rem; /* Slightly larger font size for labels */
+}
+
+
+.number {
+    font-size: 2.5rem; /* Make the numbers larger */
+    font-weight: bold; /* Make numbers bold */
+    color: #33658A; /* Text color for the numbers */
+}
+
+.label {
+    font-size: 1.2rem; /* Slightly larger font size for labels */
+}
+
+
+
+
+.text {
+    width: 70%; /* Set width of text content */
+    text-align: center; /* Center text within the div */
+    padding: 20px; /* Add padding for spacing */
+}
+
+
+
+/* Content Boxes */
+.content-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.content-box {
+    background-color: #F6F9FC;
+    border: 2px solid #86BBD8;
+    border-radius: 15px;
+    padding: 20px;
+    width: 48%;
     text-align: center;
-    margin-bottom: 3rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.cta h2 {
-    font-size: 2rem;
-    color: #1f2937;
-    margin-bottom: 1rem;
+.content-box:hover {
+    transform: translateY(-5px);
 }
+
+.content-box h2 {
+    color: #33658A;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.content-box p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* Big Button Styles */
+/* Big Button Styles */
+.big-btn {
+    background-color: #86BBD8; /* Button background color */
+    color: white;
+    border: 2px solid #86BBD8; /* Border color matching the content box */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px 30px; /* Button padding */
+    margin : 5px;
+    font-size: 18px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Transition effects */
+}
+
+.image-container {
+    background-color: #b5ddf299;
+    width: 100%; /* Full width */
+    display: flex; /* Use flex to align images */
+    justify-content: space-between; /* Space images evenly */
+}
+
+.image-container img {
+    
+    width: 50%; /* Adjust based on how many images you want per line */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.big-btn:hover {
+    background-color: #33658A; /* Change background on hover */
+    color: white; /* Keep text color white on hover */
+    border-color: #86BBD8; /* Keep border color the same on hover */
+}
+
 
 footer {
-    text-align: center;
-    color: #6b7280;
-    margin-top: 4rem;
-}
-
-@media (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Existing CSS styles remain the same */
-
-/* Add these new styles for the live count section */
-.live-count {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.count-item {
-    text-align: center;
-}
-
-.count-item h3 {
-    font-size: 1.2rem;
-    color: #4b5563;
-    margin-bottom: 0.5rem;
-}
-
-.count-item p {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1e40af;
-}
-
-/* Add this media query for responsiveness */
-@media (max-width: 768px) {
-    .live-count {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-/* Existing CSS styles remain the same */
-
-/* Add these new styles for the forms */
-.form-popup {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid #f1f1f1;
-    z-index: 9;
-    background-color: white;
-    max-width: 400px;
-    width: 90%;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-container {
-    max-width: 100%;
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #1e40af;
-}
-
-.form-container input[type=text], .form-container input[type=email], 
-.form-container input[type=number], .form-container select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.form-container .btn {
-    background-color: #2563eb;
+    background-color: #33658A;
     color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
-    opacity: 0.8;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
 }
 
-.form-container .cancel {
-    background-color: #f44336;
-}
-
-.form-container .btn:hover, .open-button:hover {
-    opacity: 1;
-}
-
-/* Add this to ensure the form is scrollable on smaller screens */
-@media (max-height: 700px) {
-    .form-popup {
-        max-height: 90vh;
-        overflow-y: auto;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 70px;
     }
+
+    .side-menu.shrink {
+        width: 0;
+    }
+
+    .content-boxes {
+        flex-direction: column;
+    }
+
+    .content-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Join Us Section */
+.join-us {
+    background-color: #f0f8ff; /* Light background color for contrast */
+    border: 2px solid #86BBD8; /* Border matching your theme */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.join-us h2 {
+    color: #33658A; /* Heading color */
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.join-us p {
+    color: #555; /* Text color */
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.menu {
+    position: relative; /* For absolute positioning of items */
+}
+
+.menu-toggle {
+    background-color: #33658A; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1.2rem; /* Button font size */
+}
+
+.menu-items {
+    display: none; /* Initially hidden */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0 0; /* Margin for spacing */
+    background-color: #f0f0f0; /* Background color */
+    border: 1px solid #33658A; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.menu-items li {
+    padding: 10px; /* Padding for list items */
+}
+
+.menu-items a {
+    text-decoration: none; /* Remove underline from links */
+    color: #33658A; /* Text color */
+    font-size: 1.2rem; /* Font size */
+    display: flex; /* Flex layout for icon and text */
+    align-items: center; /* Center items vertically */
+}
+
+.menu-items i {
+    margin-right: 8px; /* Space between the icon and text */
+    color: #33658A; /* Icon color */
+}
+
+.menu-items a:hover {
+    color: #86BBD8; /* Change text color on hover */
+}
+
+.menu-items {
+    display: none; /* Initially hidden */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 10px 0 0; /* Margin for spacing */
+    background-color: #f0f0f0; /* Background color */
+    border: 1px solid #33658A; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+
+.menu-toggle {
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor */
+    padding: 10px; /* Padding for button */
+}
+
+.hamburger-icon {
+    width: 30px; /* Width of the lines */
+    height: 4px; /* Height of the lines */
+    background-color: #33658A; /* Line color */
+    margin: 5px 0; /* Spacing between lines */
+}
+
+
+.services {
+    color : #33658A;
+    margin-left: 70px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 40px; /* Padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 20px; /* Space above the section */
+}
+
+.service-container {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between service boxes */
+}
+
+.service-box {
+    background-color: #bbd8e8; /* Service box background */
+    border: 2px solid #33658A; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside service box */
+    width: 30%; /* Width of each service box */
+    text-align: center; /* Center text */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.service-box h3 {
+    color: #5285ab; /* Heading color */
+    margin-bottom: 15px; /* Margin below heading */
+}
+
+.contact {
+    margin-top: 40px; /* Space above the contact section */
+    text-align: center; /* Center text */
+    padding: 20px; /* Padding for spacing */
+}
+
+.contact h2 {
+    color: #33658A; /* Heading color */
+}
+
+.contact p {
+    color: #555; /* Text color */
+    font-size: 16px; /* Font size */
 }
