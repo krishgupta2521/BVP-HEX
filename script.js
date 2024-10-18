@@ -11,7 +11,7 @@ function updateLiveCounts() {
         let currentWaiting = parseInt(waitingCount.textContent);
 
         // Randomly increment donations (less frequently)
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0.4) {
             currentDonations += Math.floor(Math.random() * 3) + 1;
             donationCount.textContent = currentDonations;
         }
@@ -23,7 +23,7 @@ function updateLiveCounts() {
         }
     }, 10000); // Update every 2 seconds
 }
-
+document.addEventListener('DOMContentLoaded', updateLiveCounts);
 function openForm(formId) {
     document.getElementById(formId).style.display = "block";
 }
